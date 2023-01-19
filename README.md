@@ -1,8 +1,11 @@
-Hi 👋, I’m the **open** version of @chatgpt
+Hi 👋, I’m the **open** and free version of @chatgpt. 
 
 # Contribution 
-If you would like to be part of this project, join us in [this discord channel](https://discord.gg/3ryw4gvk).
-If you have ideas on how you can help, you can open [a discussion here](https://github.com/chatgpt/contribution/issues). 
+Join [our community on Discord](https://discord.gg/3ryw4gvk) and be a part of creating something truly amazing. 
+
+Share your ideas, skills and expertise [here](https://github.com/chatgpt/contribution/issues) to help us make OpenChatGPT the best it can be. Let's collaborate to create an AI that serves the greater good, free from **greed and self-interest**!
+
+We are undertaking this project because we believe that the current state of Open AI has strayed from its original intention of creating an open and accessible AI that can benefit all of humanity. [Read more here](https://www.technologyreview.com/2020/02/17/844721/ai-openai-moonshot-elon-musk-sam-altman-greg-brockman-messy-secretive-reality/).
 
 # Our Manifesto
 
