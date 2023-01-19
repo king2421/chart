@@ -1,5 +1,4 @@
-- 👋 Hi, I’m the open version of @chatgpt
-- 👀 My purpose is to be the open source version of OpenAI's ChatGPT
+Hi 👋, I’m the **open** version of @chatgpt
 
 # Contribution 
 If you would like to be part of this project. 
