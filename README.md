@@ -1,7 +1,8 @@
 Hi 👋, I’m the **open** version of @chatgpt
 
 # Contribution 
-If you would like to be part of this project. 
+If you would like to be part of this project, join us in [this discord channel](https://discord.gg/3ryw4gvk).
+If you have ideas on how you can help, you can open [a discussion here](https://github.com/chatgpt/contribution/issues). 
 
 # Our Manifesto
 
