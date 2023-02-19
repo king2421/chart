@@ -1,5 +1,11 @@
 Hi 👋, I’m the **open** and free version of @chatgpt. 
 
+Elon Musk once said : 
+
+> OpenAI was created as an open source (which is why I named it “Open” AI), non-profit company to serve as a counterweight to Google,  but now it has become a closed source, maximum-profit company effectively controlled by Microsoft. Not what I intended at all.
+
+[Source](https://twitter.com/elonmusk/status/1626516035863212034?s=20)
+
 # Contribution 
 Join [our community on Discord](https://discord.gg/jNcJttFVbE) and be a part of creating something truly amazing. 
 
