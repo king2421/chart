@@ -1,7 +1,7 @@
 Hi 👋, I’m the **open** and free version of @chatgpt. 
 
 # Contribution 
-Join [our community on Discord](https://discord.gg/3ryw4gvk) and be a part of creating something truly amazing. 
+Join [our community on Discord](https://discord.gg/jNcJttFVbE) and be a part of creating something truly amazing. 
 
 Share your ideas, skills and expertise [here](https://github.com/chatgpt/contribution/issues) to help us make OpenChatGPT the best it can be. Let's collaborate to create an AI that serves the greater good, free from **greed and self-interest**!
 
