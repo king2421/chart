@@ -1,10 +1,12 @@
-Hi 👋, I’m the **open** and free version of @chatgpt. 
+# ChartGPT
 
-Elon Musk once said : 
+ChartGPT is a lightweight and simple tool to plot your Pandas dataframe.
 
-> OpenAI was created as an open source (which is why I named it “Open” AI), non-profit company to serve as a counterweight to Google,  but now it has become a closed source, maximum-profit company effectively controlled by Microsoft. Not what I intended at all.
+## Installation
 
-[Source](https://twitter.com/elonmusk/status/1626516035863212034?s=20)
+```python
+pip install chartgpt
+```
 
 # Contribution 
 Join [our community on Discord](https://discord.gg/jNcJttFVbE) and be a part of creating something truly amazing. 
