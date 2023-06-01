@@ -137,7 +137,7 @@ if __name__ == "__main__":
     from chartgpt import ChartGPT
 
     df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/2014_usa_states.csv")
-    cg = ChartGPT(api_key="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")
+    cg = ChartGPT(api_key="KEY_HERE")
     df = pd.DataFrame(
         {
             "State": ["New York", "California", "Texas"],
