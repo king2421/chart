@@ -29,7 +29,6 @@ class LLM:
             raise ValueError("Please provide an OpenAI API key")
         openai.api_key = self.api_key
 
-
     def _extract_code(self, response: str, separator: str = "```") -> str:
         """
         Extract the code from the response.
@@ -68,13 +67,10 @@ class LLM:
             str: Code
         """
 
-        return self._extract_code(
-            self.completion(str(instruction) + prompt)
-        )
+        return self._extract_code(self.completion(str(instruction) + prompt))
 
     @property
     def _default_params(self) -> Dict[str, Any]:
-
         """
         Get the default parameters for calling OpenAI API
 
