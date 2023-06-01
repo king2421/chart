@@ -22,6 +22,10 @@ dependencies = [
     "openai>=0.2.0",
     "python-dotenv>=1.0.0",
 ]
+dev = [
+    "ruff==0.0.138",
+    "pre-commit>=2.17.0,<3.0.0",
+]
 
 [project.optional-dependencies]
 doc = [
