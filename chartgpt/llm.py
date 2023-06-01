@@ -16,12 +16,19 @@ class LLM:
         temperature: int = 0.2,
         model_name: str = "text-davinci-003",
         max_tokens: int = 1000,
+        api_key: Optional[str] = None,
     ):
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.top_p = 1
         self.frequency_penalty = 0
         self.presence_penalty = 0
+
+        self.api_key = api_key or os.getenv("OPENAI_API_KEY") or None
+        if self.api_key is None:
+            raise ValueError("Please provide an OpenAI API key")
+        openai.api_key = self.api_key
+
 
     def _extract_code(self, response: str, separator: str = "```") -> str:
         """
@@ -47,7 +54,9 @@ class LLM:
             code = match.group(1).strip()
         if len(code.split(separator)) > 1:
             code = code.split(separator)[1]
-        print(code)
+
+        if "fig.show()" in code:
+            code = code.replace("fig.show()", "fig")
 
         return code
 
@@ -59,10 +68,8 @@ class LLM:
             str: Code
         """
 
-        prompt = str(instruction) + prompt
-
         return self._extract_code(
-            self.completion(prompt)
+            self.completion(str(instruction) + prompt)
         )
 
     @property
