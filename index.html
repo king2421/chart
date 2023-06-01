@@ -259,40 +259,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bar-chart" class="md-nav__link">
-    Bar Chart
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#line-chart" class="md-nav__link">
-    Line Chart
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#scatter-plot" class="md-nav__link">
-    Scatter Plot
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#additional-resources" class="md-nav__link">
     Additional Resources
   </a>
@@ -363,40 +329,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bar-chart" class="md-nav__link">
-    Bar Chart
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#line-chart" class="md-nav__link">
-    Line Chart
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#scatter-plot" class="md-nav__link">
-    Scatter Plot
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#additional-resources" class="md-nav__link">
     Additional Resources
   </a>
@@ -419,7 +351,7 @@
 
 
 <h1 id="chartgpt">ChartGPT</h1>
-<p>ChartGPT is a Python library that leverages the power of Langchain and Plotly to generate charts from a pandas dataframe with just a single command.</p>
+<p>ChartGPT is a Python library that leverages the power of GPT to generate Plotly charts from a pandas dataframe with a very simple prompt. Ask it anything, and it will generate a chart for you.</p>
 <p>It provides an intuitive and easy-to-use interface for creating visually appealing and interactive charts, making data visualization a breeze.</p>
 <h2 id="installation">Installation</h2>
 <p>To install ChartGPT, you can use pip:</p>
@@ -428,32 +360,19 @@
 <h2 id="usage">Usage</h2>
 <p>Once installed, you can start using ChartGPT in your Python projects. Here's an example of how to use it:</p>
 <pre><code class="language-Python">from chartgpt import ChartGPT
-
 cg = ChartGPT()
-cg.plot(df, title=&quot;My Chart&quot;, x_label=&quot;X&quot;, y_label=&quot;Y&quot;)
+cg.load(df)
+cg.plot(&quot;State vs. Population&quot;)
 </code></pre>
 <p>The above code snippet demonstrates the basic usage of ChartGPT. Let's break it down:</p>
 <ol>
 <li>Import the <code>ChartGPT</code> class from the <code>cg</code> module.</li>
 <li>Create an instance of <code>ChartGPT</code> using <code>cg = ChartGPT()</code>.</li>
-<li>Call the <code>plot</code> method on the <code>cg</code> instance, passing in your pandas dataframe (<code>df</code>), and providing optional parameters such as <code>title</code>, <code>x_label</code>, and <code>y_label</code>.</li>
+<li>Load <code>df</code> into ChartGPT.</li>
+<li>Ask ChartGPT to plot the chart with your specific instructions. The model will do the rest 😉</li>
 </ol>
-<p>The <code>plot</code> method will generate a chart based on the provided dataframe and display it. You can customize the chart further by using additional parameters or methods provided by the Plotly library.</p>
-<h2 id="examples">Examples</h2>
-<p>ChartGPT supports various types of charts, including bar charts, line charts, scatter plots, and more. Here are a few examples:</p>
-<h3 id="bar-chart">Bar Chart</h3>
-<pre><code class="language-Python">cg.plot(df, chart_type=&quot;bar&quot;, title=&quot;Bar Chart&quot;, x_label=&quot;Categories&quot;, y_label=&quot;Values&quot;)
-</code></pre>
-<h3 id="line-chart">Line Chart</h3>
-<pre><code class="language-Python">cg.plot(df, chart_type=&quot;line&quot;, title=&quot;Line Chart&quot;, x_label=&quot;Time&quot;, y_label=&quot;Values&quot;)
-</code></pre>
-<h3 id="scatter-plot">Scatter Plot</h3>
-<pre><code class="language-Python">cg.plot(df, chart_type=&quot;scatter&quot;, title=&quot;Scatter Plot&quot;, x_label=&quot;X&quot;, y_label=&quot;Y&quot;)
-</code></pre>
-<p>These are just a few examples of what you can achieve with ChartGPT. Feel free to explore the Plotly documentation to learn more about customizing your charts.</p>
 <h2 id="additional-resources">Additional Resources</h2>
 <ul>
-<li><a href="https://python.langchain.com/en/latest/">Langchain Documentation</a></li>
 <li><a href="https://plotly.com/python/">Plotly Documentation</a></li>
 </ul>
 <p>For detailed usage instructions and advanced features, refer to the official documentation of ChartGPT.</p>
