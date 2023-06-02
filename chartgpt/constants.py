@@ -6,8 +6,8 @@ Builtin Methods.
 
 """
 
-START_CODE_TAG = "<startCode>"
-END_CODE_TAG = "<endCode>"
+START_CODE_TAG = "```"
+END_CODE_TAG = "```"
 WHITELISTED_LIBRARIES = [
     "numpy",
     "matplotlib",

@@ -11,18 +11,18 @@ theme:
   palette:
   - media: '(prefers-color-scheme: light)'
     scheme: default
-    primary: teal
+    primary: indigo
     accent: amber
     toggle:
-      icon: material/lightbulb
-      name: Switch to light mode
+      icon: material/brightness-2
+      name: Switch to dark mode
   - media: '(prefers-color-scheme: dark)'
     scheme: slate
-    primary: teal
+    primary: indigo
     accent: amber
     toggle:
-      icon: material/lightbulb-outline
-      name: Switch to dark mode
+      icon: material/weather-sunny
+      name: Switch to light mode
   features:
   - search.suggest
   - search.highlight
