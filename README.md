@@ -30,8 +30,10 @@ from chartgpt import ChartGPT
 # Load your Pandas dataframe
 df = pd.read_csv('data.csv')
 
-# Load the dataframe into ChartGPT
-cg = ChartGPT
+# Add OpenAI API key
+cg = ChartGPT(api_key="YOUR_API_KEY")
+
+# Load the dataframe
 cg.load(df)
 
 # Use ChartGPT to plot the dataframe
