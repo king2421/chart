@@ -18,6 +18,7 @@ class ChartGPT:
     def __init__(
         self,
         api_key: Optional[str] = None,
+        **kwargs,
     ) -> None:
         """_summary_
 
@@ -26,11 +27,11 @@ class ChartGPT:
             conversational (bool, optional): _description_. Defaults to True.
             verbose (bool, optional): _description_. Defaults to False.
         """
-        self.llm = LLM(api_key=api_key)
+        self.llm = LLM(api_key=api_key, **kwargs)
         self.fig = None
         self.last_run_code = None
 
-    def load(self, data: pd.DataFrame) -> None:
+    def load(self, df: pd.DataFrame) -> None:
         """Load a DataFrame.
 
         Args:
@@ -39,8 +40,8 @@ class ChartGPT:
         Returns:
             None
         """
-        self.data = data
-        self.data_columns = data.columns
+        self.df = df
+        self.df_columns = df.columns
 
     def plot(
         self, prompt: str, show_code=False, debug=False, return_fig=False
@@ -57,11 +58,9 @@ class ChartGPT:
             str: _description_
         """
 
-        df_columns = self.data.columns
-
         self._original_instructions = {
             "question": prompt,
-            "df_columns": df_columns,
+            "df_columns": self.df_columns,
         }
 
         if debug:
@@ -73,14 +72,14 @@ fig"""
         else:
             code = self.llm.generate_code(
                 GeneratePythonCodePrompt(
-                    df_columns=df_columns,
+                    df_columns=self.df_columns,
                 ),
                 prompt,
             )
 
         fig = self.run_code(
             code,
-            self.data,
+            self.df,
         )
 
         self.last_run_code = code
@@ -135,12 +134,3 @@ fig"""
             return eval(last_line, environment)
         except Exception:
             return captured_output
-
-
-if __name__ == "__main__":
-    df = pd.read_csv(
-        "https://raw.githubusercontent.com/plotly/datasets/master/2014_usa_states.csv"
-    )
-    cg = ChartGPT(api_key=None)
-    cg.load(df)
-    cg.plot("pop vs state", debug=False)

@@ -1,28 +1,48 @@
 import os
 import re
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 import openai
 
 from .constants import END_CODE_TAG, START_CODE_TAG
 from .prompts.base import Prompt
 
-# from abc import ABC, abstractmethod
-
 
 class LLM:
+    """LLM class for generating code from a prompt.
+
+    Args:
+        model_name (str, optional): Model name. Defaults to "text-davinci-003".
+        temperature (int, optional): Temperature. Defaults to 0.2.
+        max_tokens (int, optional): Max tokens. Defaults to 1000.
+        top_p (int, optional): Top p. Defaults to 1.
+        frequency_penalty (int, optional): Frequency penalty. Defaults to 0.
+        presence_penalty (int, optional): Presence penalty. Defaults to 0.
+        api_key (str, optional): OpenAI API key. Defaults to None.
+
+    Raises:
+        ValueError: If no API key is provided.
+
+    Returns:
+        str: Generated code
+    """
+
     def __init__(
         self,
-        temperature: int = 0.2,
         model_name: str = "text-davinci-003",
+        temperature: int = 0.2,
         max_tokens: int = 1000,
-        api_key: Optional[str] = None,
+        top_p: int = 1,
+        frequency_penalty: int = 0,
+        presence_penalty: int = 0,
+        api_key: str = None,
     ):
+        self.model_name = model_name
         self.temperature = temperature
         self.max_tokens = max_tokens
-        self.top_p = 1
-        self.frequency_penalty = 0
-        self.presence_penalty = 0
+        self.top_p = top_p
+        self.frequency_penalty = frequency_penalty
+        self.presence_penalty = presence_penalty
 
         self.api_key = api_key or os.getenv("OPENAI_API_KEY") or None
         if self.api_key is None:
@@ -36,9 +56,6 @@ class LLM:
         Args:
             response (str): Response
             separator (str, optional): Separator. Defaults to "```".
-
-        Raises:
-            NoCodeFoundError: No code found in the response
 
         Returns:
             str: Extracted code from the response
@@ -66,7 +83,6 @@ class LLM:
         Returns:
             str: Code
         """
-
         return self._extract_code(self.completion(str(instruction) + prompt))
 
     @property
@@ -79,7 +95,7 @@ class LLM:
         """
 
         return {
-            "model": "text-davinci-003",
+            "model": self.model_name,
             "temperature": self.temperature,
             "max_tokens": self.max_tokens,
             "top_p": self.top_p,
