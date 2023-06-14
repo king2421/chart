@@ -1,12 +1,14 @@
 # ChartGPT
 
-ChartGPT is a Python library that leverages the power of GPT to generate Plotly charts from a pandas dataframe with a very simple prompt. Ask it anything, and it will generate a chart for you.
+Welcome to the ChartGPT documentation! This documentation provides an overview of the ChartGPT library and guides you on how to use it to generate visualizations for your Pandas dataframes.
 
-It provides an intuitive and easy-to-use interface for creating visually appealing and interactive charts, making data visualization a breeze.
+## Introduction
+
+ChartGPT is a lightweight and user-friendly tool designed to assist you in visualizing your Pandas dataframes. Whether you are working in a Jupyter notebook or developing a Dash app, ChartGPT makes it effortless to generate stunning charts and plots. 📈
 
 ## Installation
 
-To install ChartGPT, you can use pip:
+You can install ChartGPT using pip:
 
 ```bash
 pip install chartgpt
@@ -14,28 +16,54 @@ pip install chartgpt
 
 ## Usage
 
-Once installed, you can start using ChartGPT in your Python projects. Here's an example of how to use it:
+ChartGPT provides an intuitive interface for generating charts from your dataframes.
 
-```Python
-from chartgpt import ChartGPT
-cg = ChartGPT()
-cg.load(df)
-cg.plot("State vs. Population")
-```
+### Jupyter Notebook
 
-The above code snippet demonstrates the basic usage of ChartGPT. Let's break it down:
+To use ChartGPT in a Jupyter notebook, you can follow these steps:
 
-1. Import the `ChartGPT` class from the `cg` module.
-2. Create an instance of `ChartGPT` using `cg = ChartGPT()`.
-3. Load `df` into ChartGPT.
-4. Ask ChartGPT to plot the chart with your specific instructions. The model will do the rest 😉
+1. Import the `chartgpt` module:
 
-## Additional Resources
+   ```python
+   import chartgpt as cg
+   ```
 
-- [Plotly Documentation](https://plotly.com/python/)
+2. Read your data into a Pandas dataframe. For example:
 
-For detailed usage instructions and advanced features, refer to the official documentation of ChartGPT.
+   ```python
+   import pandas as pd
 
----
+   df = pd.read_csv('data.csv')
+   ```
 
-ChartGPT is an open-source project maintained by the community. If you have any questions, feedback, or issues, please don't hesitate to reach out on the project's GitHub page. We appreciate your contribution and hope you find ChartGPT useful for your data visualization needs.
+3. Create a `Chart` object by passing the dataframe and your API key (if applicable):
+
+   ```python
+   chart = cg.Chart(df)
+   ```
+
+   By default, ChartGPT will look for an API key in the `OPENAI_API_KEY` environment variable. If you have set this variable, you can omit the `api_key` parameter. Otherwise you will need to provide your API key using the `api_key` parameter like so:
+
+   ```python
+   chart = cg.Chart(df, api_key="YOUR_API_KEY")
+   ```
+
+4. Generate a chart by calling the `plot` method with a prompt:
+
+   ```python
+   chart.plot("Ask any question you want!")
+   ```
+
+   This will generate a chart based on the provided prompt.
+
+### Dash App
+
+ChartGPT can also be integrated into Dash apps for interactive visualizations. You can find an example Dash app in the ChartGPT documentation [here](https://colab.research.google.com/drive/1KvXzl8W_WfmS-_VSG12A9eyT2YAHL1HE?usp=sharing).
+
+## Documentation
+
+For detailed information on how to use ChartGPT, please refer to the [documentation](https://chatgpt.github.io/chart/). The documentation provides comprehensive guides, API reference, and examples to help you get started with ChartGPT.
+
+## License
+
+This project is licensed under the MIT License. For more information, please see the [LICENSE](LICENSE) file.
