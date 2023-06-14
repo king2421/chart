@@ -245,6 +245,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     Installation
   </a>
@@ -256,11 +263,38 @@
     Usage
   </a>
   
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jupyter-notebook" class="md-nav__link">
+    Jupyter Notebook
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dash-app" class="md-nav__link">
+    Dash App
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#additional-resources" class="md-nav__link">
-    Additional Resources
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
   </a>
   
 </li>
@@ -315,6 +349,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     Installation
   </a>
@@ -326,11 +367,38 @@
     Usage
   </a>
   
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jupyter-notebook" class="md-nav__link">
+    Jupyter Notebook
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dash-app" class="md-nav__link">
+    Dash App
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#additional-resources" class="md-nav__link">
-    Additional Resources
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
   </a>
   
 </li>
@@ -351,33 +419,49 @@
 
 
 <h1 id="chartgpt">ChartGPT</h1>
-<p>ChartGPT is a Python library that leverages the power of GPT to generate Plotly charts from a pandas dataframe with a very simple prompt. Ask it anything, and it will generate a chart for you.</p>
-<p>It provides an intuitive and easy-to-use interface for creating visually appealing and interactive charts, making data visualization a breeze.</p>
+<p>Welcome to the ChartGPT documentation! This documentation provides an overview of the ChartGPT library and guides you on how to use it to generate visualizations for your Pandas dataframes.</p>
+<h2 id="introduction">Introduction</h2>
+<p>ChartGPT is a lightweight and user-friendly tool designed to assist you in visualizing your Pandas dataframes. Whether you are working in a Jupyter notebook or developing a Dash app, ChartGPT makes it effortless to generate stunning charts and plots. 📈</p>
 <h2 id="installation">Installation</h2>
-<p>To install ChartGPT, you can use pip:</p>
+<p>You can install ChartGPT using pip:</p>
 <pre><code class="language-bash">pip install chartgpt
 </code></pre>
 <h2 id="usage">Usage</h2>
-<p>Once installed, you can start using ChartGPT in your Python projects. Here's an example of how to use it:</p>
-<pre><code class="language-Python">from chartgpt import ChartGPT
-cg = ChartGPT()
-cg.load(df)
-cg.plot(&quot;State vs. Population&quot;)
-</code></pre>
-<p>The above code snippet demonstrates the basic usage of ChartGPT. Let's break it down:</p>
+<p>ChartGPT provides an intuitive interface for generating charts from your dataframes.</p>
+<h3 id="jupyter-notebook">Jupyter Notebook</h3>
+<p>To use ChartGPT in a Jupyter notebook, you can follow these steps:</p>
 <ol>
-<li>Import the <code>ChartGPT</code> class from the <code>cg</code> module.</li>
-<li>Create an instance of <code>ChartGPT</code> using <code>cg = ChartGPT()</code>.</li>
-<li>Load <code>df</code> into ChartGPT.</li>
-<li>Ask ChartGPT to plot the chart with your specific instructions. The model will do the rest 😉</li>
+<li>Import the <code>chartgpt</code> module:</li>
 </ol>
-<h2 id="additional-resources">Additional Resources</h2>
-<ul>
-<li><a href="https://plotly.com/python/">Plotly Documentation</a></li>
-</ul>
-<p>For detailed usage instructions and advanced features, refer to the official documentation of ChartGPT.</p>
-<hr />
-<p>ChartGPT is an open-source project maintained by the community. If you have any questions, feedback, or issues, please don't hesitate to reach out on the project's GitHub page. We appreciate your contribution and hope you find ChartGPT useful for your data visualization needs.</p>
+<p><code>python
+   import chartgpt as cg</code></p>
+<ol>
+<li>Read your data into a Pandas dataframe. For example:</li>
+</ol>
+<p>```python
+   import pandas as pd</p>
+<p>df = pd.read_csv('data.csv')
+   ```</p>
+<ol>
+<li>Create a <code>Chart</code> object by passing the dataframe and your API key (if applicable):</li>
+</ol>
+<p><code>python
+   chart = cg.Chart(df)</code></p>
+<p>By default, ChartGPT will look for an API key in the <code>OPENAI_API_KEY</code> environment variable. If you have set this variable, you can omit the <code>api_key</code> parameter. Otherwise you will need to provide your API key using the <code>api_key</code> parameter like so:</p>
+<p><code>python
+   chart = cg.Chart(df, api_key="YOUR_API_KEY")</code></p>
+<ol>
+<li>Generate a chart by calling the <code>plot</code> method with a prompt:</li>
+</ol>
+<p><code>python
+   chart.plot("Ask any question you want!")</code></p>
+<p>This will generate a chart based on the provided prompt.</p>
+<h3 id="dash-app">Dash App</h3>
+<p>ChartGPT can also be integrated into Dash apps for interactive visualizations. You can find an example Dash app in the ChartGPT documentation <a href="https://colab.research.google.com/drive/1KvXzl8W_WfmS-_VSG12A9eyT2YAHL1HE?usp=sharing">here</a>.</p>
+<h2 id="documentation">Documentation</h2>
+<p>For detailed information on how to use ChartGPT, please refer to the <a href="https://chatgpt.github.io/chart/">documentation</a>. The documentation provides comprehensive guides, API reference, and examples to help you get started with ChartGPT.</p>
+<h2 id="license">License</h2>
+<p>This project is licensed under the MIT License. For more information, please see the <a href="LICENSE">LICENSE</a> file.</p>
 
 
 
