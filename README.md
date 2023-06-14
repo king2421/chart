@@ -22,15 +22,17 @@ pip install chartgpt
 
 ### Jupyter Notebook 📔
 
-![ChartGPT in a Jupyter notebook](docs/assets/notebook.png)
-
 ```python
 import chartgpt as cg
 
 df = pd.read_csv('data.csv')
 chart = cg.Chart(df, api_key="YOUR_API_KEY")
-chart.plot("Ask any question you want!")
+chart.plot("Pop vs. State")
 ```
+
+![ChartGPT in a Jupyter notebook](docs/assets/chart.png)
+
+Generated graph after inputting 'Pop vs. State'
 
 ### Dash App 🚀
 
