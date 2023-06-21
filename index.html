@@ -430,34 +430,25 @@
 <p>ChartGPT provides an intuitive interface for generating charts from your dataframes.</p>
 <h3 id="jupyter-notebook">Jupyter Notebook</h3>
 <p>To use ChartGPT in a Jupyter notebook, you can follow these steps:</p>
-<ol>
-<li>Import the <code>chartgpt</code> module:</li>
-</ol>
-<p><code>python
-   import chartgpt as cg</code></p>
-<ol>
-<li>Read your data into a Pandas dataframe. For example:</li>
-</ol>
-<p>```python
-   import pandas as pd</p>
-<p>df = pd.read_csv('data.csv')
-   ```</p>
-<ol>
-<li>Create a <code>Chart</code> object by passing the dataframe and your API key (if applicable):</li>
-</ol>
-<p><code>python
-   chart = cg.Chart(df)</code></p>
+<p>Import the <code>chartgpt</code> module:</p>
+<pre><code class="language-python">import chartgpt as cg
+</code></pre>
+<p>Read your data into a Pandas dataframe. For example:</p>
+<pre><code class="language-python">import pandas as pd
+df = pd.read_csv('data.csv')
+</code></pre>
+<p>Create a <code>Chart</code> object by passing the dataframe and your API key (if applicable):</p>
+<pre><code class="language-python">chart = cg.Chart(df)
+</code></pre>
 <p>By default, ChartGPT will look for an API key in the <code>OPENAI_API_KEY</code> environment variable. If you have set this variable, you can omit the <code>api_key</code> parameter. Otherwise you will need to provide your API key using the <code>api_key</code> parameter like so:</p>
-<p><code>python
-   chart = cg.Chart(df, api_key="YOUR_API_KEY")</code></p>
-<ol>
-<li>Generate a chart by calling the <code>plot</code> method with a prompt:</li>
-</ol>
-<p><code>python
-   chart.plot("Ask any question you want!")</code></p>
+<pre><code class="language-python">chart = cg.Chart(df, api_key=&quot;YOUR_API_KEY&quot;)
+</code></pre>
+<p>Generate a chart by calling the <code>plot</code> method with a prompt:</p>
+<pre><code class="language-python">chart.plot(&quot;Ask any question you want!&quot;)
+</code></pre>
 <p>This will generate a chart based on the provided prompt.</p>
 <h3 id="dash-app">Dash App</h3>
-<p>ChartGPT can also be integrated into Dash apps for interactive visualizations. You can find an example Dash app in the ChartGPT documentation <a href="https://colab.research.google.com/drive/1KvXzl8W_WfmS-_VSG12A9eyT2YAHL1HE?usp=sharing">here</a>.</p>
+<p>ChartGPT can also be integrated into Dash apps for interactive visualizations.</p>
 <h2 id="documentation">Documentation</h2>
 <p>For detailed information on how to use ChartGPT, please refer to the <a href="https://chatgpt.github.io/chart/">documentation</a>. The documentation provides comprehensive guides, API reference, and examples to help you get started with ChartGPT.</p>
 <h2 id="license">License</h2>
