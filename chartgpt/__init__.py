@@ -6,6 +6,7 @@ class Chart:
 
     This object is used to generate charts from a DataFrame. It can be used in \
     two ways:
+
     1. To generate a chart from a DataFrame with OPENAI_API_KEY set as an \
     environment variable:
         ```
@@ -25,19 +26,16 @@ class Chart:
         df (pd.DataFrame): A DataFrame.
         api_key (str, optional): An OpenAI API key. Defaults to None.
 
-    Kwargs:
-        max_tokens (int, optional): Maximum number of tokens to use. Defaults to 1000.
-        temperature (float, optional): Temperature. Defaults to 0.2.
-        top_p (float, optional): Top p. Defaults to 1.
-        frequency_penalty (float, optional): Frequency penalty. Defaults to 0.
-        presence_penalty (float, optional): Presence penalty. Defaults to 0.
-        chat (bool, optional): Whether to use the chat model or not. Defaults to True.
+    Additional keywords arguments:
+        - max_tokens (int, optional): Maximum number of tokens to use. Defaults to 1000.
+        - temperature (float, optional): Temperature. Defaults to 0.2.
+        - top_p (float, optional): Top p. Defaults to 1.
+        - frequency_penalty (float, optional): Frequency penalty. Defaults to 0.
+        - presence_penalty (float, optional): Presence penalty. Defaults to 0.
+        - chat (bool, optional): Whether to use the chat model or not. Defaults to True.
 
     Returns:
         Chart: A ChartGPT object.
-
-    Additional arguments include:
-
     """
 
     def __init__(self, df=None, api_key=None, **kwargs):

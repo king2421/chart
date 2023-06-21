@@ -22,43 +22,42 @@ ChartGPT provides an intuitive interface for generating charts from your datafra
 
 To use ChartGPT in a Jupyter notebook, you can follow these steps:
 
-1. Import the `chartgpt` module:
+Import the `chartgpt` module:
 
-   ```python
-   import chartgpt as cg
-   ```
+```python
+import chartgpt as cg
+```
 
-2. Read your data into a Pandas dataframe. For example:
+Read your data into a Pandas dataframe. For example:
 
-   ```python
-   import pandas as pd
+```python
+import pandas as pd
+df = pd.read_csv('data.csv')
+```
 
-   df = pd.read_csv('data.csv')
-   ```
+Create a `Chart` object by passing the dataframe and your API key (if applicable):
 
-3. Create a `Chart` object by passing the dataframe and your API key (if applicable):
+```python
+chart = cg.Chart(df)
+```
 
-   ```python
-   chart = cg.Chart(df)
-   ```
+By default, ChartGPT will look for an API key in the `OPENAI_API_KEY` environment variable. If you have set this variable, you can omit the `api_key` parameter. Otherwise you will need to provide your API key using the `api_key` parameter like so:
 
-   By default, ChartGPT will look for an API key in the `OPENAI_API_KEY` environment variable. If you have set this variable, you can omit the `api_key` parameter. Otherwise you will need to provide your API key using the `api_key` parameter like so:
+```python
+chart = cg.Chart(df, api_key="YOUR_API_KEY")
+```
 
-   ```python
-   chart = cg.Chart(df, api_key="YOUR_API_KEY")
-   ```
+Generate a chart by calling the `plot` method with a prompt:
 
-4. Generate a chart by calling the `plot` method with a prompt:
+```python
+chart.plot("Ask any question you want!")
+```
 
-   ```python
-   chart.plot("Ask any question you want!")
-   ```
-
-   This will generate a chart based on the provided prompt.
+This will generate a chart based on the provided prompt.
 
 ### Dash App
 
-ChartGPT can also be integrated into Dash apps for interactive visualizations. You can find an example Dash app in the ChartGPT documentation [here](https://colab.research.google.com/drive/1KvXzl8W_WfmS-_VSG12A9eyT2YAHL1HE?usp=sharing).
+ChartGPT can also be integrated into Dash apps for interactive visualizations.
 
 ## Documentation
 
