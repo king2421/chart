@@ -18,6 +18,7 @@ the dataframe `df`. You can use any chart type you want.
 Using the provided dataframe, df, return the python code and make sure to prefix the \
 requested python code with {START_CODE_TAG} exactly and suffix the code with \
 {END_CODE_TAG} exactly to get the answer to the following question:
+{user_prompt}
 """
 
     def __init__(self, **kwargs):
