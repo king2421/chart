@@ -5,7 +5,6 @@ from typing import Any, Dict
 import openai
 
 from .constants import END_CODE_TAG, START_CODE_TAG
-from .prompts.base import Prompt
 
 
 class LLM:
@@ -29,25 +28,29 @@ class LLM:
 
     def __init__(
         self,
-        model_name: str = "text-davinci-003",
+        model_name: str = None,
         temperature: int = 0.2,
         max_tokens: int = 1000,
         top_p: int = 1,
         frequency_penalty: int = 0,
         presence_penalty: int = 0,
+        chat: bool = True,
         api_key: str = None,
     ):
-        self.model_name = model_name
+        self.model_name = model_name or "gpt-3.5-turbo" if chat else "text-davinci-003"
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.top_p = top_p
         self.frequency_penalty = frequency_penalty
         self.presence_penalty = presence_penalty
+        self.chat = chat
 
         self.api_key = api_key or os.getenv("OPENAI_API_KEY") or None
         if self.api_key is None:
             raise ValueError("Please provide an OpenAI API key")
         openai.api_key = self.api_key
+
+        self.messages = []
 
     def _extract_code(self, response: str, separator: str = "```") -> str:
         """
@@ -71,19 +74,25 @@ class LLM:
         if len(code.split(separator)) > 1:
             code = code.split(separator)[1]
 
+        if self.chat:
+            code = code.replace("python", "")
+
         if "fig.show()" in code:
             code = code.replace("fig.show()", "fig")
 
         return code
 
-    def generate_code(self, instruction: Prompt, prompt: str) -> str:
+    def generate_code(self, instructions: str) -> str:
         """
         Generate the code based on the instruction and the given prompt.
 
         Returns:
             str: Code
         """
-        return self._extract_code(self.completion(str(instruction) + prompt))
+        if self.chat:
+            return self._extract_code(self.chat_completion(instructions))
+        else:
+            return self._extract_code(self.completion(instructions))
 
     @property
     def _default_params(self) -> Dict[str, Any]:
@@ -118,3 +127,34 @@ class LLM:
         response = openai.Completion.create(**params)
 
         return response["choices"][0]["text"]
+
+    def chat_completion(self, value: str) -> str:
+        """
+        Query the chat completion API
+
+        Args:
+            value (str): Prompt
+
+        Returns:
+            str: LLM response
+        """
+        params = {
+            **self._default_params,
+            "messages": [
+                {
+                    "role": "system",
+                    "content": value,
+                }
+            ],
+        }
+
+        response = openai.ChatCompletion.create(**params)
+        message = response["choices"][0]["message"]["content"]
+
+        self.add_history(value, message)
+        return message
+
+    def add_history(self, user_message, bot_message):
+        self.messages.append({"role": "system", "content": bot_message})
+        self.messages.append({"role": "human", "content": user_message})
+        return None

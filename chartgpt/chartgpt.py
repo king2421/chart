@@ -30,6 +30,7 @@ class ChartGPT:
         self.llm = LLM(api_key=api_key, **kwargs)
         self.fig = None
         self.last_run_code = None
+        self.variables_payload = {}
 
     def load(self, df: pd.DataFrame) -> None:
         """Load a DataFrame.
@@ -46,7 +47,7 @@ class ChartGPT:
     def plot(
         self, prompt: str, show_code=False, debug=False, return_fig=False
     ) -> Figure:
-        """Run the model on a prompt.
+        """Generate a plot based on the prompt.
 
         Args:
             prompt (Optional[str]): _description_
@@ -58,24 +59,21 @@ class ChartGPT:
             str: _description_
         """
 
-        self._original_instructions = {
-            "question": prompt,
-            "df_columns": self.df_columns,
-        }
-
         if debug:
             code = """
-import plotly.express as px
+import plotly.graph_objects as go
 
-fig = px.bar(df, x="State", y="Population")
+fig = go.Figure
 fig"""
         else:
-            code = self.llm.generate_code(
-                GeneratePythonCodePrompt(
-                    df_columns=self.df_columns,
-                ),
-                prompt,
-            )
+            self.variables_payload = {
+                "question": prompt,
+                "df_columns": self.df_columns,
+                "user_prompt": prompt,
+            }
+            instructions = str(GeneratePythonCodePrompt(**self.variables_payload))
+
+            code = self.llm.generate_code(instructions)
 
         fig = self.run_code(
             code,
