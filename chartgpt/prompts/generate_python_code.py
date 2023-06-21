@@ -14,8 +14,7 @@ You are given a dataset `df` with the following columns: {df_columns}.
 
 When asked about the data, your response must include a python code that uses the \
 library Plotly to make a chart using the dataframe `df`. If necessary, you can filter \
-the dataframe `df`. If the question in complex, feel free to use Plotly Graph Objects \
-instead of Plotly Express.
+the dataframe `df`. You can use any chart type you want.
 Using the provided dataframe, df, return the python code and make sure to prefix the \
 requested python code with {START_CODE_TAG} exactly and suffix the code with \
 {END_CODE_TAG} exactly to get the answer to the following question:
