@@ -147,9 +147,9 @@ class LLM:
                 }
             ],
         }
-
-        response = openai.ChatCompletion.create(**params)
-        message = response["choices"][0]["message"]["content"]
+        
+        response = openai.chat.completions.create(**params)
+        message = response.choices[0].message.content
 
         self.add_history(value, message)
         return message
