@@ -1,3 +1,5 @@
+[![Downloads](https://static.pepy.tech/badge/chartgpt)](https://pepy.tech/project/chartgpt)
+
 ![ChartGPT Logo](docs/assets/chartgpt_logo.svg)
 
 ---
@@ -14,7 +16,7 @@ ChartGPT is a lightweight and user-friendly tool designed to assist you in visua
 
 You can install ChartGPT using pip:
 
-```shell
+```bash
 pip install chartgpt
 ```
 
